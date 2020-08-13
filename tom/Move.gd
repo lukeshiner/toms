@@ -21,6 +21,7 @@ func state_logic(delta):
 		wobble_time += wobble_step * delta
 	else:
 		parent.sprite.rotation_degrees = 0
+	.state_logic(delta)
 
 func get_transition(_delta):
 	return null

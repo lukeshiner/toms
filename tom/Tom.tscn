@@ -124,6 +124,7 @@ script = ExtResource( 14 )
 visible = false
 position = Vector2( 0, -4.72471 )
 frames = SubResource( 5 )
+frame = 2
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

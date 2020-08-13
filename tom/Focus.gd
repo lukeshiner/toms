@@ -3,7 +3,7 @@ extends Control
 var max_value = 100
 var min_value = 0
 export(float) var drain_time = 1.0
-export(float) var recharge_time = 1.5
+export(float) var recharge_time = 0.5
 
 enum {
 	UP, DOWN

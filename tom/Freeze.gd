@@ -1,8 +1,5 @@
 extends State
 
-func state_logic(_delta):
-	pass
-
 func get_transition(_delta):
 	return null
 

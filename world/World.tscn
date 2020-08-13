@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://world/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://tom/Tom.tscn" type="PackedScene" id=2]
 [ext_resource path="res://world/InputHandler.gd" type="Script" id=3]
+[ext_resource path="res://fire/Flames.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node2D"]
 
@@ -14,8 +15,45 @@ tile_data = PoolIntArray( 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65
 
 [node name="Toms" type="Node" parent="."]
 
-[node name="Tom" parent="Toms" instance=ExtResource( 2 )]
-position = Vector2( 256, 96 )
+[node name="Tom" parent="Toms" groups=[
+"Toms",
+] instance=ExtResource( 2 )]
+position = Vector2( 264, 72 )
+
+[node name="Tom2" parent="Toms" groups=[
+"Toms",
+] instance=ExtResource( 2 )]
+position = Vector2( 224, 75.2753 )
+
+[node name="Tom5" parent="Toms" groups=[
+"Toms",
+] instance=ExtResource( 2 )]
+position = Vector2( 256, 104 )
+
+[node name="Tom6" parent="Toms" groups=[
+"Toms",
+] instance=ExtResource( 2 )]
+position = Vector2( 232, 128 )
+
+[node name="Tom7" parent="Toms" groups=[
+"Toms",
+] instance=ExtResource( 2 )]
+position = Vector2( 264, 131.275 )
+
+[node name="Tom3" parent="Toms" groups=[
+"Toms",
+] instance=ExtResource( 2 )]
+position = Vector2( 288, 96 )
+
+[node name="Tom4" parent="Toms" groups=[
+"Toms",
+] instance=ExtResource( 2 )]
+position = Vector2( 288, 96 )
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="Flames" parent="." groups=[
+"Fire",
+] instance=ExtResource( 4 )]
+position = Vector2( 208, 104 )
