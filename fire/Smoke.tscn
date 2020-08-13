@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="Smoke" type="CPUParticles2D"]
+amount = 20
+lifetime_randomness = 0.42
+emission_shape = 2
+emission_rect_extents = Vector2( 8, 1 )
+gravity = Vector2( 0, -50 )
+color = Color( 0.0901961, 0.0901961, 0.0901961, 0.819608 )

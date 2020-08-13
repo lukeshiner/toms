@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://tom/tom.png" type="Texture" id=1]
 [ext_resource path="res://tom/Tom.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://tom/tom_fire-Sheet.png" type="Texture" id=13]
 [ext_resource path="res://tom/Burn.gd" type="Script" id=14]
 [ext_resource path="res://tom/Focus.gd" type="Script" id=15]
+[ext_resource path="res://fire/Smoke.tscn" type="PackedScene" id=16]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 13 )
@@ -124,8 +125,9 @@ script = ExtResource( 14 )
 visible = false
 position = Vector2( 0, -4.72471 )
 frames = SubResource( 5 )
-frame = 2
 playing = true
+
+[node name="Smoke" parent="Flaming" instance=ExtResource( 16 )]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -150,9 +152,9 @@ __meta__ = {
 
 [node name="HealthUnder" type="TextureProgress" parent="HealthBar"]
 margin_left = -8.0
-margin_top = -11.5435
+margin_top = -14.9296
 margin_right = 8.0
-margin_bottom = -9.54353
+margin_bottom = -12.9296
 value = 100.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 6 )
@@ -163,9 +165,9 @@ __meta__ = {
 
 [node name="HealthOver" type="TextureProgress" parent="HealthBar"]
 margin_left = -8.0
-margin_top = -11.5435
+margin_top = -14.9296
 margin_right = 8.0
-margin_bottom = -9.5435
+margin_bottom = -12.9296
 value = 100.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 6 )
@@ -188,9 +190,9 @@ __meta__ = {
 
 [node name="FocusBar" type="TextureProgress" parent="Focus"]
 margin_left = -8.0
-margin_top = -14.9296
+margin_top = -17.8059
 margin_right = 8.0
-margin_bottom = -12.9296
+margin_bottom = -15.8059
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 5 )
 __meta__ = {
