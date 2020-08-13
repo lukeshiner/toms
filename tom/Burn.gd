@@ -2,7 +2,7 @@ extends Move
 
 var damage_timer = Timer.new()
 var stop_burn_timer = Timer.new()
-var damage = 15
+var damage = 12
 
 func _ready():
 	can_focus = false
@@ -16,13 +16,13 @@ func _ready():
 	add_child(damage_timer)
 
 	stop_burn_timer.one_shot = true
-	stop_burn_timer.wait_time = (float(randi() % 30) + 20) / 10
+	stop_burn_timer.wait_time = (float(randi() % 30) + 40) / 10
 	self.add_child(stop_burn_timer)
 
 	damage_timer.connect("timeout", self, "_on_damage_timer_timeout")
 
 func _on_damage_timer_timeout():
-	parent.health -= damage
+	parent.health -= damage / 2
 
 func state_logic(delta):
 	.state_logic(delta)
@@ -31,13 +31,16 @@ func state_logic(delta):
 		direction = get_direction()
 
 func get_transition(_delta):
-	if stop_burn_timer.is_stopped():
+	if parent.health <= 0:
+		return parent.BURNED
+	elif stop_burn_timer.is_stopped():
 		return parent.WANDER
 	return null
 
 func enter_state(_previous_state):
 	parent.animationPlayer.play("Scared")
 	parent.fireSprite.visible = true
+	parent.health -= damage
 	direction = get_direction()
 	damage_timer.start()
 	stop_burn_timer.start()

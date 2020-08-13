@@ -11,6 +11,8 @@ onready var WANDER = $StateMachine/Wander
 onready var FREEZE = $StateMachine/Freeze
 onready var RUN_FROM = $StateMachine/RunFrom
 onready var BURN = $StateMachine/Burn
+onready var BURNED = $StateMachine/Burned
+onready var DEAD = $StateMachine/Dead
 
 var health = 100.0 setget health_set
 

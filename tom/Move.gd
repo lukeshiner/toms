@@ -23,9 +23,6 @@ func state_logic(delta):
 		parent.sprite.rotation_degrees = 0
 	.state_logic(delta)
 
-func get_transition(_delta):
-	return null
-
 func enter_state(_previous_state):
 	parent.animationPlayer.play("Run")
 

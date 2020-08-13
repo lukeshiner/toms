@@ -8,6 +8,8 @@ func state_logic(_delta):
 	handle_collision()
 
 func get_transition(_delta):
+	if parent.health <= 0:
+		return parent.DEAD
 	return null
 
 func enter_state(_previous_state):
