@@ -4,16 +4,13 @@ onready var sprite = $Sprite
 onready var fireSprite = $Flaming
 onready var stateMachine = $StateMachine
 onready var animationPlayer = $AnimationPlayer
-onready var focusTimer = $FocusTimer
 onready var healthBar = $HealthBar
-onready var focusBar = $FocusBar
+onready var focus = $Focus
 
 onready var WANDER = $StateMachine/Wander
 onready var FREEZE = $StateMachine/Freeze
 onready var RUN_FROM = $StateMachine/RunFrom
 onready var BURN = $StateMachine/Burn
-
-export(float) var focus_time = 1.0
 
 var health = 100.0 setget health_set
 
@@ -23,22 +20,20 @@ func health_set(value):
 
 func _ready():
 	randomize()
-	stateMachine.set_state(BURN)
-
-func _physics_process(_delta):
-	var focus_value = inverse_lerp(0, focus_time, focusTimer.time_left)
-	focusBar.value = lerp(0, 100, focus_value)
+	stateMachine.set_state(WANDER)
 
 func run_from(location):
-	stateMachine.set_state(RUN_FROM)
-	var to_mouse = position.direction_to(location)
-	var direction = to_mouse * -1
-	focusTimer.start(focus_time)
-	stateMachine.state.direction = direction
+	if stateMachine.state.can_focus and focus.can_focus():
+		stateMachine.set_state(RUN_FROM)
+		var to_mouse = position.direction_to(location)
+		var direction = to_mouse * -1
+		focus.start()
+		stateMachine.state.direction = direction
 
 func freeze():
-	focusTimer.start(focus_time)
-	stateMachine.set_state(FREEZE)
+	if stateMachine.state.can_focus and focus.can_focus():
+		focus.start()
+		stateMachine.set_state(FREEZE)
 
-func _on_FocusTimer_timeout():
+func _on_Focus_focus_lost():
 	stateMachine.set_state(WANDER)

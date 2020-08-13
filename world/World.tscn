@@ -17,17 +17,5 @@ tile_data = PoolIntArray( 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65
 [node name="Tom" parent="Toms" instance=ExtResource( 2 )]
 position = Vector2( 256, 96 )
 
-[node name="Tom2" parent="Toms" instance=ExtResource( 2 )]
-position = Vector2( 240, 72 )
-
-[node name="Tom3" parent="Toms" instance=ExtResource( 2 )]
-position = Vector2( 144, 96 )
-
-[node name="Tom4" parent="Toms" instance=ExtResource( 2 )]
-position = Vector2( 120, 200 )
-
-[node name="Tom5" parent="Toms" instance=ExtResource( 2 )]
-position = Vector2( 312, 192 )
-
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource( 3 )

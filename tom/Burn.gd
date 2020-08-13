@@ -5,6 +5,7 @@ var stop_burn_timer = Timer.new()
 var damage = 15
 
 func _ready():
+	can_focus = false
 	speed = 8192
 	wobble_step = 17
 	wobble_extent = 9
