@@ -12,7 +12,6 @@ func click_indicator(location):
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
-		print(event)
 		click_indicator(event.position)
 		for tom in toms:
 			if tom.position.distance_to(event.position) <= focus_distance:

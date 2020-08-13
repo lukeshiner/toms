@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://tom/tom.png" type="Texture" id=1]
 [ext_resource path="res://tom/Tom.gd" type="Script" id=2]
@@ -6,13 +6,44 @@
 [ext_resource path="res://tom/health_bar_under.png" type="Texture" id=4]
 [ext_resource path="res://tom/focus_bar_progress.png" type="Texture" id=5]
 [ext_resource path="res://tom/health_bar_progress.png" type="Texture" id=6]
+[ext_resource path="res://tom/TomStateMachine.gd" type="Script" id=7]
+[ext_resource path="res://tom/Wander.gd" type="Script" id=8]
+[ext_resource path="res://tom/Move.gd" type="Script" id=9]
+[ext_resource path="res://tom/Idle.gd" type="Script" id=10]
+[ext_resource path="res://tom/Freeze.gd" type="Script" id=11]
+[ext_resource path="res://tom/RunFrom.gd" type="Script" id=12]
+[ext_resource path="res://tom/tom_fire-Sheet.png" type="Texture" id=13]
+[ext_resource path="res://tom/Burn.gd" type="Script" id=14]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 13 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 13 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 13 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 3.54343
 height = 6.54183
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=7]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -28,19 +59,85 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "Run"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 18, 19, 20 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Scared"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 14, 15, 16, 17 ]
+}
+
 [node name="Tom" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource( 2 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="Wander" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource( 9 )
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 10 )
+
+[node name="Freeze" type="Node" parent="StateMachine"]
+script = ExtResource( 11 )
+
+[node name="RunFrom" type="Node" parent="StateMachine"]
+script = ExtResource( 12 )
+
+[node name="Burn" type="Node" parent="StateMachine"]
+script = ExtResource( 14 )
+
+[node name="Flaming" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 0, -4.72471 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 14
-frame = 1
+hframes = 21
+frame = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 2 )
+anims/Idle = SubResource( 7 )
+anims/Run = SubResource( 8 )
+anims/Scared = SubResource( 9 )
 
 [node name="FocusTimer" type="Timer" parent="."]
 one_shot = true
