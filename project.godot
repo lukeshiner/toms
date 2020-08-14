@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Toms"
-run/main_scene="res://world/World.tscn"
+run/main_scene="res://levels/Level_001.tscn"
 config/icon="res://icon.png"
 
 [display]

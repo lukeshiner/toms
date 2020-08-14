@@ -4,7 +4,7 @@ var ClickIndicator = preload("res://tom/ClickIndicator.tscn")
 var EndLevel = preload("res://ui/EndLevel.tscn")
 export(float) var focus_distance = 80
 
-onready var cleanup = get_tree().current_scene.get_node("Cleanup")
+onready var cleanup = get_parent().get_node("Cleanup")
 
 var toms = []
 var dangers = []
