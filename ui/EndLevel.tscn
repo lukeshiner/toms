@@ -91,9 +91,9 @@ anims/Fade = SubResource( 1 )
 
 [node name="Restart" type="Button" parent="."]
 margin_left = 208.0
-margin_top = 184.0
+margin_top = 208.0
 margin_right = 303.0
-margin_bottom = 204.0
+margin_bottom = 228.0
 text = "Restart Level"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -101,9 +101,9 @@ __meta__ = {
 
 [node name="NextLevel" type="Button" parent="."]
 margin_left = 208.0
-margin_top = 216.0
+margin_top = 168.0
 margin_right = 303.0
-margin_bottom = 236.0
+margin_bottom = 188.0
 disabled = true
 text = "Next Level"
 __meta__ = {

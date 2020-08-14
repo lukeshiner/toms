@@ -15,8 +15,13 @@ func _on_Restart_pressed():
 
 
 func _on_NextLevel_pressed():
-	pass # Replace with function body.
+	var next_level_path = "res://levels/Level_00" + str(int(get_tree().current_scene.name) + 1) + ".tscn"
+# warning-ignore:return_value_discarded
+	get_tree().change_scene(next_level_path)
+	get_tree().paused = false
 
 
 func _on_Menu_pressed():
-	pass # Replace with function body.
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://ui/Menu.tscn")
+	get_tree().paused = false
