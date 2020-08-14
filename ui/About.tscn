@@ -86,19 +86,19 @@ __meta__ = {
 }
 
 [node name="BackButton" type="Button" parent="Control"]
-margin_left = 256.0
-margin_top = 240.0
-margin_right = 480.0
-margin_bottom = 272.0
+margin_left = 144.0
+margin_top = 248.0
+margin_right = 368.0
+margin_bottom = 280.0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
-margin_left = 264.0
+margin_left = 256.0
 margin_top = 128.0
-margin_right = 464.0
+margin_right = 456.0
 margin_bottom = 216.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Created by Luke Shiner
@@ -106,6 +106,16 @@ text = "Created by Luke Shiner
 07 - 14 August 2020
 
 For the Low-Teir Jam"
+
+[node name="GithubButton" type="Button" parent="Control"]
+margin_left = 256.0
+margin_top = 216.0
+margin_right = 365.0
+margin_bottom = 236.0
+text = "View on Github"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 112, 144 )
@@ -119,3 +129,4 @@ position = Vector2( 360, 80 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
 [connection signal="pressed" from="Control/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Control/GithubButton" to="." method="_on_GithubButton_pressed"]
