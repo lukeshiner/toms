@@ -61,36 +61,43 @@ script = ExtResource( 3 )
 [node name="Fires" type="Node" parent="Dangers"]
 
 [node name="Flames" parent="Dangers/Fires" groups=[
+"Dangers",
 "Fire",
 ] instance=ExtResource( 4 )]
 position = Vector2( 208, 104 )
 
 [node name="Flames2" parent="Dangers/Fires" groups=[
+"Dangers",
 "Fire",
 ] instance=ExtResource( 4 )]
 position = Vector2( 384, 54.1941 )
 
 [node name="Flames3" parent="Dangers/Fires" groups=[
+"Dangers",
 "Fire",
 ] instance=ExtResource( 4 )]
 position = Vector2( 184, 200 )
 
 [node name="Flames4" parent="Dangers/Fires" groups=[
+"Dangers",
 "Fire",
 ] instance=ExtResource( 4 )]
 position = Vector2( 336, 131.275 )
 
 [node name="Flames5" parent="Dangers/Fires" groups=[
+"Dangers",
 "Fire",
 ] instance=ExtResource( 4 )]
 position = Vector2( 128, 86.1941 )
 
 [node name="Flames6" parent="Dangers/Fires" groups=[
+"Dangers",
 "Fire",
 ] instance=ExtResource( 4 )]
 position = Vector2( 120, 176 )
 
 [node name="Flames7" parent="Dangers/Fires" groups=[
+"Dangers",
 "Fire",
 ] instance=ExtResource( 4 )]
 position = Vector2( 400, 200 )
