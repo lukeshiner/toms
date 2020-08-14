@@ -79,7 +79,7 @@ visible = false
 margin_top = 16.0
 margin_right = 440.0
 margin_bottom = 32.0
-text = "Left click near him to freeze him"
+text = "Right click near him to freeze him"
 __meta__ = {
 "_edit_use_anchors_": false
 }
