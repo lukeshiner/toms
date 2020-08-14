@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://tom/tom.png" type="Texture" id=1]
 [ext_resource path="res://tom/Tom.gd" type="Script" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://fire/Smoke.tscn" type="PackedScene" id=16]
 [ext_resource path="res://tom/Dead.gd" type="Script" id=17]
 [ext_resource path="res://tom/Burned.gd" type="Script" id=18]
+[ext_resource path="res://tom/burn.wav" type="AudioStream" id=19]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 13 )
@@ -129,11 +130,14 @@ script = ExtResource( 12 )
 [node name="Burn" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
 
+[node name="BurnTimer" type="Timer" parent="StateMachine/Burn"]
+wait_time = 3.0
+one_shot = true
+
 [node name="Flaming" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0, -4.72471 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Smoke" parent="Flaming" instance=ExtResource( 16 )]
@@ -210,5 +214,8 @@ __meta__ = {
 
 [node name="FocusTimer" type="Timer" parent="Focus"]
 one_shot = true
+
+[node name="BurnSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
 [connection signal="focus_lost" from="Focus" to="." method="_on_Focus_focus_lost"]
 [connection signal="timeout" from="Focus/FocusTimer" to="Focus" method="_on_FocusTimer_timeout"]

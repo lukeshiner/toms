@@ -14,6 +14,8 @@ onready var BURN = $StateMachine/Burn
 onready var BURNED = $StateMachine/Burned
 onready var DEAD = $StateMachine/Dead
 
+onready var burn_sound = $BurnSound
+
 var health = 100.0 setget health_set
 
 signal scared
@@ -47,4 +49,5 @@ func freeze():
 		emit_signal("frozen")
 
 func _on_Focus_focus_lost():
-	stateMachine.set_state(WANDER)
+	if stateMachine.state in [RUN_FROM, FREEZE]:
+		stateMachine.set_state(WANDER)

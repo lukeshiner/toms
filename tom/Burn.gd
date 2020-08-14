@@ -1,7 +1,8 @@
 extends Move
 
+onready var stop_burn_timer = $BurnTimer
+
 var damage_timer = Timer.new()
-var stop_burn_timer = Timer.new()
 var damage = 12
 
 func _ready():
@@ -14,10 +15,6 @@ func _ready():
 
 	damage_timer.wait_time = 1.0
 	add_child(damage_timer)
-
-	stop_burn_timer.one_shot = true
-	stop_burn_timer.wait_time = (float(randi() % 30) + 40) / 10
-	self.add_child(stop_burn_timer)
 
 	damage_timer.connect("timeout", self, "_on_damage_timer_timeout")
 
@@ -43,7 +40,8 @@ func enter_state(_previous_state):
 	parent.health -= damage
 	direction = get_direction()
 	damage_timer.start()
-	stop_burn_timer.start()
+	stop_burn_timer.start((float(randi() % 20) + 10.0) / 10)
+	parent.burn_sound.play()
 
 func exit_state(_new_state):
 	damage_timer.stop()
