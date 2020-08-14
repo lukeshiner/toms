@@ -13,9 +13,6 @@ func state_logic(delta):
 	else:
 		parent.animationPlayer.play("Idle")
 
-func get_transition(_delta):
-	return null
-
 func enter_state(_previous_state):
 	parent.animationPlayer.play("Idle")
 	direction = get_direction()

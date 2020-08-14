@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://tom/tom.png" type="Texture" id=1]
 [ext_resource path="res://tom/Tom.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://tom/Dead.gd" type="Script" id=17]
 [ext_resource path="res://tom/Burned.gd" type="Script" id=18]
 [ext_resource path="res://tom/burn.wav" type="AudioStream" id=19]
+[ext_resource path="res://tom/spikes.wav" type="AudioStream" id=20]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 13 )
@@ -100,7 +101,7 @@ tracks/0/keys = {
 
 [node name="Tom" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 15
 script = ExtResource( 2 )
 
 [node name="StateMachine" type="Node" parent="."]
@@ -216,6 +217,11 @@ __meta__ = {
 one_shot = true
 
 [node name="BurnSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 19 )
+
+[node name="SpikesSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 20 )
 [connection signal="focus_lost" from="Focus" to="." method="_on_Focus_focus_lost"]
 [connection signal="timeout" from="Focus/FocusTimer" to="Focus" method="_on_FocusTimer_timeout"]

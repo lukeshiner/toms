@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spikes.wav-1b71ed1b32a1d4fab23dd14489ebd716.sample"
+
+[deps]
+
+source_file="res://tom/spikes.wav"
+dest_files=[ "res://.import/spikes.wav-1b71ed1b32a1d4fab23dd14489ebd716.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

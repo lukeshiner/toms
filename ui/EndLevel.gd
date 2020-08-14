@@ -4,6 +4,8 @@ onready var label = $Label
 onready var restart = $Restart
 onready var next_level = $NextLevel
 onready var menu = $Menu
+onready var win_sound = $WinSound
+onready var lose_sound = $LoseSound
 
 func _ready():
 	get_tree().paused = true

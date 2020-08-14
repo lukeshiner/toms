@@ -23,6 +23,7 @@ func _process(_delta):
 		if len(toms) == 0:
 			instance.label.text = "All the Toms died"
 			instance.next_level.disabled = true
+			instance.lose_sound.play()
 		else:
 			instance.label.text = "You Saved " + str(len(toms)) + " Tom"
 			if len(toms) > 1:
@@ -30,6 +31,7 @@ func _process(_delta):
 			else:
 				instance.label.text += "!"
 			instance.next_level.disabled = false
+			instance.win_sound.play()
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:

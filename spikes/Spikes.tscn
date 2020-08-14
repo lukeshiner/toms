@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://spikes/spikes.png" type="Texture" id=1]
+[ext_resource path="res://spikes/Spikes.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.83367, 8.44994 )
+
+[node name="Spikes" type="StaticBody2D"]
+collision_layer = 8
+script = ExtResource( 2 )
+
+[node name="MouseOver" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseOver"]
+shape = SubResource( 1 )
+
+[node name="Highlight" type="Polygon2D" parent="."]
+visible = false
+color = Color( 0.368627, 0.85098, 0.996078, 0.588235 )
+polygon = PoolVector2Array( -8, 8, -8, -8, 8, -8, 8, 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+[connection signal="mouse_entered" from="MouseOver" to="." method="_on_MouseOver_mouse_entered"]
+[connection signal="mouse_exited" from="MouseOver" to="." method="_on_MouseOver_mouse_exited"]

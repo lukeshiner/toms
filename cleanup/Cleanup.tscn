@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Cleanup.gd" type="Script" id=1]
 [ext_resource path="res://tom/health_bar_progress.png" type="Texture" id=2]
 [ext_resource path="res://cleanup/cleanup.png" type="Texture" id=3]
+[ext_resource path="res://cleanup/cleanup.wav" type="AudioStream" id=4]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=1]
 resource_name = "Cleanup"
 loop = true
 tracks/0/type = "value"
@@ -31,7 +32,7 @@ offset = Vector2( 16, -8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Cleanup"
-anims/Cleanup = SubResource( 9 )
+anims/Cleanup = SubResource( 1 )
 
 [node name="CleanupTimer" type="Timer" parent="."]
 one_shot = true
@@ -53,4 +54,7 @@ tint_progress = Color( 0, 0.717647, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 [connection signal="timeout" from="CleanupTimer" to="." method="_on_CleanupTimer_timeout"]

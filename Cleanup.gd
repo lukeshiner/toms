@@ -12,6 +12,8 @@ export(bool) var enabled = true
 
 var danger = null
 
+onready var sound = $AudioStreamPlayer
+
 signal start_cleanup
 
 func clean(object):
@@ -37,3 +39,4 @@ func _on_CleanupTimer_timeout():
 	danger = null
 	cleanup.visible = false
 	progress.visible = false
+	sound.play()

@@ -15,6 +15,7 @@ onready var BURNED = $StateMachine/Burned
 onready var DEAD = $StateMachine/Dead
 
 onready var burn_sound = $BurnSound
+onready var spikes_sound = $SpikesSound
 
 var health = 100.0 setget health_set
 

@@ -25,6 +25,8 @@ func handle_collision():
 			collide_tom(collision)
 		elif collision.collider.is_in_group("Fire"):
 			collide_fire(collision)
+		elif collision.collider.is_in_group("Spikes"):
+			collide_spikes(collision)
 
 func collide_tom(collision):
 	var tom = collision.collider
@@ -33,3 +35,9 @@ func collide_tom(collision):
 
 func collide_fire(_collision):
 	parent.stateMachine.set_state(parent.BURN)
+
+func collide_spikes(collision):
+	parent.health -= collision.collider.damage
+	parent.stateMachine.state = parent.RUN_FROM
+	parent.stateMachine.state.direction = parent.global_position.direction_to(collision.collider.global_position) * -1
+	parent.spikes_sound.play()
