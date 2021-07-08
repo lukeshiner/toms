@@ -42,4 +42,5 @@ polygon = PoolVector2Array( -8, -8, -8, 312, 520, 312, 520, -8 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Fade"
 anims/Fade = SubResource( 1 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
